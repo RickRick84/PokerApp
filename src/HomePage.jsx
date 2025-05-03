@@ -1,7 +1,7 @@
-// src/HomePage.jsx
 import React, { useEffect, useRef, useState } from 'react';
 import { useAuth } from './AuthContext';
 import { Navigate, useNavigate } from 'react-router-dom';
+import LogoutIcon from './LogoutIcon'; // ✅ importado
 import './App.css';
 
 function HomePage() {
@@ -38,26 +38,30 @@ function HomePage() {
   const handleSubscriptionClick = () => {
     playSound();
     navigate('/suscripciones');
-  };  
+  };
 
   return (
-    <div className="app homepage-container">
-      <div className="language-selector">
-        <button onClick={() => handleLanguageSelect('es')}>ESPAÑOL</button>
-        <button onClick={() => handleLanguageSelect('pt')}>PORTUGUÊS</button>
-        <button onClick={() => handleLanguageSelect('en')}>ENGLISH</button>
-      </div>
+    <>
+      <LogoutIcon /> {/* ✅ botón fijo de logout */}
 
-      <button onClick={handleSubscriptionClick} className="subscription-button">
-        Ver planes de suscripción
-      </button>
-
-      {showPopup && (
-        <div className="popup-message">
-          Tranca... se viene algo lindo 😉
+      <div className="app homepage-container">
+        <div className="language-selector">
+          <button onClick={() => handleLanguageSelect('es')}>ESPAÑOL</button>
+          <button onClick={() => handleLanguageSelect('pt')}>PORTUGUÊS</button>
+          <button onClick={() => handleLanguageSelect('en')}>ENGLISH</button>
         </div>
-      )}
-    </div>
+
+        <button onClick={handleSubscriptionClick} className="subscription-button">
+          Ver planes de suscripción
+        </button>
+
+        {showPopup && (
+          <div className="popup-message">
+            Tranca... se viene algo lindo 😉
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 

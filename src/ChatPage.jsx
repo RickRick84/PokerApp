@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { FaHome, FaPaperPlane } from 'react-icons/fa';
 import AdminControls from './AdminControls';
+import LogoutIcon from './LogoutIcon'; // ✅ agregado
 import './App.css';
 
 const translations = {
@@ -169,6 +170,8 @@ function ChatPage() {
 
   return (
     <>
+      <LogoutIcon /> {/* ✅ agregado acá arriba del todo */}
+
       <Link to="/" className="home-link">
         <FaHome size={15} />
       </Link>
