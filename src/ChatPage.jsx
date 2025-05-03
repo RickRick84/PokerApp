@@ -160,6 +160,13 @@ function ChatPage() {
     }
   };
 
+  const handleButtonClick = () => {
+    if (!loading) {
+      playSendSound();
+      sendMessageLogic();
+    }
+  };
+
   return (
     <>
       <Link to="/" className="home-link">
