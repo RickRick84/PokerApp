@@ -1,11 +1,8 @@
-// src/LoginForm.jsx
 import { useState } from 'react';
 import {
   GoogleAuthProvider,
-  signInWithRedirect,
+  signInWithPopup,
   signInWithEmailAndPassword,
-  setPersistence,
-  browserLocalPersistence,
 } from 'firebase/auth';
 import { auth } from './firebaseConfig';
 
@@ -20,12 +17,12 @@ const LoginForm = () => {
     setError(null);
     setLoadingGoogle(true);
     try {
-      await setPersistence(auth, browserLocalPersistence);
       const provider = new GoogleAuthProvider();
-      await signInWithRedirect(auth, provider);
+      await signInWithPopup(auth, provider);
     } catch (err) {
       console.error('Error al iniciar con Google:', err.message);
       setError('Error al iniciar con Google');
+    } finally {
       setLoadingGoogle(false);
     }
   };
@@ -35,7 +32,6 @@ const LoginForm = () => {
     setError(null);
     setLoadingEmail(true);
     try {
-      await setPersistence(auth, browserLocalPersistence);
       await signInWithEmailAndPassword(auth, email, password);
     } catch (err) {
       console.error('Error al iniciar con correo:', err.message);
