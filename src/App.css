@@ -1,0 +1,398 @@
+/* Estilos Generales (aplicados a todo el body, a menos que se anulen) */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url('/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Contenedor principal */
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+/* --- CHAT --- */
+.app.chat-page-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 95vh;
+  height: 85vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+}
+
+/* Título */
+.title-container {
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto 1.5rem auto;
+  flex-shrink: 0;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 250px;
+}
+
+/* Caja de chat */
+.chat-box {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  padding: 1rem;
+  width: 540px;
+  max-width: 540px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.8rem;
+  box-sizing: border-box;
+  min-width: 0;
+  flex-grow: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Mensajes */
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+  max-width: 80%;
+  padding: 0.7rem 1.2rem;
+  border-radius: 20px;
+  margin: 0.4rem 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  overflow: visible;
+  font-size: 1rem;
+  line-height: 1.4;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.message span {
+  display: inline-block;
+}
+
+.message.user {
+  align-self: flex-end;
+  background-color: #00e0ff;
+  color: #000;
+}
+
+.message.assistant {
+  align-self: flex-start;
+  background-color: #00ff88;
+  color: #000;
+}
+
+/* Input */
+.input-bar {
+  display: flex;
+  gap: 0.4rem;
+  width: 540px;
+  max-width: 540px;
+  padding: 0.6rem;
+  border-radius: 12px;
+  align-items: center;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  margin-top: 0.8rem;
+  height: auto;
+  align-self: center;
+}
+
+.input-bar input {
+  flex: 1;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  background-color: #1e1e1e;
+  color: #fff;
+  padding-right: 1.5rem;
+  min-width: 0;
+}
+
+.input-bar button {
+  background-color: #00ff88;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  flex-shrink: 0;
+}
+
+.input-bar button:hover {
+  color: #00e07a;
+}
+
+/* Página de suscripciones */
+.subscription-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.subscription-options {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.subscription-card {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  border: 2px solid #00ff88;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 240px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease-in-out;
+}
+
+.subscription-card:hover {
+  transform: scale(1.03);
+}
+
+.subscription-card h3 {
+  margin-bottom: 1rem;
+  color: #00ff88;
+}
+
+.subscription-card p {
+  margin-bottom: 1rem;
+}
+
+.subscription-card button {
+  background-color: #00ff88;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  padding: 0.6rem 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.subscription-card button:hover {
+  background-color: #00e07a;
+  color: #000;
+}
+
+/* Logout */
+.logout-button {
+  background-color: #ff6666;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin-top: 1rem;
+}
+
+.logout-button:hover {
+  background-color: #ff3333;
+  color: #fff;
+}
+
+.subscription-button {
+  margin-top: 1rem;
+  background-color: #00ff88;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  padding: 0.8rem 1.4rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.subscription-button:hover {
+  background-color: #00e07a;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.popup-message {
+  position: fixed;
+  bottom: 30px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #00ff88;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+  z-index: 999;
+  animation: fadeInOut 2.5s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(20px); }
+}
+
+/* Login / Registro */
+.auth-form {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  margin: 2rem auto;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-form h2 {
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  background-color: #1e1e1e;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.auth-form button {
+  background-color: #00ff88;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.auth-form button:hover {
+  background-color: #00e07a;
+  color: #000;
+}
+
+.auth-form .google-button {
+  background-color: #ffffff;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+.auth-error {
+  color: #ff6666;
+  background-color: rgba(255, 0, 0, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media only screen and (max-width: 768px) {
+  body {
+    background-position: center top;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .app.chat-page-container {
+    position: relative;
+    transform: none;
+    height: auto;
+    max-height: none;
+    overflow-y: auto;
+    padding: 1rem;
+  }
+
+  .chat-box {
+    width: 100%;
+    max-width: none;
+    margin-top: -30px;
+    height: 400px;
+  }
+
+  .input-bar {
+    width: 100%;
+    max-width: none;
+    gap: 0.3rem;
+    padding: 0.4rem;
+    margin-top: 8px;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .input-bar input {
+    min-width: 80px;
+    flex: 1;
+  }
+
+  .input-bar button {
+    width: 95px;
+    padding: 0.8rem 0;
+    text-align: center;
+  }
+
+  .subscription-options {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
