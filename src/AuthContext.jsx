@@ -13,19 +13,20 @@ export const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       console.log("👤 Usuario detectado:", firebaseUser);
       setUser(firebaseUser);
-      setLoading(false);
+      setLoading(false); // ✅ Marca como cargado
     });
 
-    // 🟢 Captura el login por redirección (Google)
     getRedirectResult(auth)
       .then((result) => {
         if (result && result.user) {
           console.log("✅ Login con Google OK:", result.user);
           setUser(result.user);
+          setLoading(false); // ✅ ACÁ estaba faltando: importantísimo
         }
       })
       .catch((err) => {
         console.error("❌ Error en getRedirectResult:", err.message);
+        setLoading(false); // ✅ Aún si falla, hay que terminar el loading
       });
 
     return () => unsubscribe();
