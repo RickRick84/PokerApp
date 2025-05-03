@@ -1,9 +1,9 @@
 import { useAuth } from './AuthContext';
 import { useState, useEffect, useRef } from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import { FaHome, FaPaperPlane } from 'react-icons/fa';
 import AdminControls from './AdminControls';
-import LogoutIcon from './LogoutIcon'; // ✅ agregado
+import LogoutIcon from './LogoutIcon';
 import './App.css';
 
 const translations = {
@@ -22,10 +22,10 @@ const translations = {
     welcome: 'Olá! Eu sou o seu assistente. Em que posso ajudar hoje?',
     placeholder: 'Escreva sua pergunta...',
     writing: 'Escrevendo...',
-    fetchError: 'Ocorreu um error ao conectar com a API.',
+    fetchError: 'Ocorreu um erro ao conectar com a API.',
     openaiError: (code, message) =>
       `Erro da OpenAI: ${code || 'Código desconhecido'} - ${message || 'Erro desconhecido'}`,
-    invalidOpenAIResponse: 'Não foi possível obter una resposta válida da OpenAI.',
+    invalidOpenAIResponse: 'Não foi possível obter uma resposta válida da OpenAI.',
   },
   en: {
     system: 'You are a friendly and helpful assistant in English.',
@@ -40,44 +40,48 @@ const translations = {
 };
 
 function ChatPage() {
-  const { lang } = useParams();
-  const [currentLang, setCurrentLang] = useState(lang || 'es');
   const { user, loading: authLoading } = useAuth();
-  const isAdmin = user?.email === 'rickybarba@hotmail.com';
-
-  const t = translations[currentLang] || translations['es'];
-
-  const [messages, setMessages] = useState([
-    { role: 'system', content: t.system },
-    { role: 'assistant', content: t.welcome },
-  ]);
+  const [currentLang, setCurrentLang] = useState('es');
+  const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
-
   const chatBoxRef = useRef(null);
-  const sendAudioRef = useRef(new globalThis.Audio('/sounds/button-click.mp3'));
+  const sendAudioRef = useRef(new Audio('/sounds/button-click.mp3'));
 
   const playSendSound = () => {
     sendAudioRef.current.currentTime = 0;
-    sendAudioRef.current.play().catch((error) => console.error('Error playing send sound:', error));
+    sendAudioRef.current.play().catch((error) => console.error('Error playing sound:', error));
   };
+
+  useEffect(() => {
+    const browserLang = navigator.language.slice(0, 2);
+    const lang = ['es', 'en', 'pt'].includes(browserLang) ? browserLang : 'es';
+    setCurrentLang(lang);
+  }, []);
+
+  useEffect(() => {
+    const t = translations[currentLang];
+    setMessages([
+      { role: 'system', content: t.system },
+      { role: 'assistant', content: t.welcome },
+    ]);
+  }, [currentLang]);
 
   useEffect(() => {
     const chatBox = chatBoxRef.current;
     if (chatBox) {
-      const timeoutId = globalThis.setTimeout(() => {
+      const timeoutId = setTimeout(() => {
         chatBox.scrollTop = chatBox.scrollHeight;
       }, 50);
-      return () => globalThis.clearTimeout(timeoutId);
+      return () => clearTimeout(timeoutId);
     }
   }, [messages, loading]);
 
-  useEffect(() => {
-    setCurrentLang(lang || 'es');
-  }, [lang]);
-
   if (authLoading) return <p>Cargando...</p>;
   if (!user) return <Navigate to="/login" />;
+
+  const t = translations[currentLang];
+  const isAdmin = user?.email === 'rickybarba@hotmail.com';
 
   const getTodayKey = () => new Date().toISOString().split('T')[0];
   const getTodayCount = () => parseInt(localStorage.getItem(getTodayKey())) || 0;
@@ -104,7 +108,7 @@ function ChatPage() {
     }
 
     const userMessage = { role: 'user', content: input };
-    setMessages((currentMessages) => [...currentMessages, userMessage]);
+    setMessages((msgs) => [...msgs, userMessage]);
     setInput('');
     setLoading(true);
     incrementTodayCount();
@@ -123,27 +127,27 @@ function ChatPage() {
       if (!response.ok) {
         const errorData = await response.json().catch(() => null);
         const errorMsg = errorData?.error || `HTTP error! status: ${response.status}`;
-        setMessages((currentMessages) => [...currentMessages, { role: 'assistant', content: errorMsg }]);
+        setMessages((msgs) => [...msgs, { role: 'assistant', content: errorMsg }]);
         return;
       }
 
       const data = await response.json();
       if (data.choices?.[0]?.message) {
-        setMessages((currentMessages) => [...currentMessages, data.choices[0].message]);
+        setMessages((msgs) => [...msgs, data.choices[0].message]);
       } else if (data.error) {
-        setMessages((currentMessages) => [
-          ...currentMessages,
+        setMessages((msgs) => [
+          ...msgs,
           { role: 'assistant', content: t.openaiError(data.error.code, data.error.message) },
         ]);
       } else {
-        setMessages((currentMessages) => [
-          ...currentMessages,
+        setMessages((msgs) => [
+          ...msgs,
           { role: 'assistant', content: t.invalidOpenAIResponse },
         ]);
       }
     } catch (error) {
-      setMessages((currentMessages) => [
-        ...currentMessages,
+      setMessages((msgs) => [
+        ...msgs,
         { role: 'assistant', content: t.fetchError + ' (' + error.message + ')' },
       ]);
     } finally {
@@ -152,12 +156,10 @@ function ChatPage() {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && !loading) {
       e.preventDefault();
-      if (!loading) {
-        playSendSound();
-        sendMessageLogic();
-      }
+      playSendSound();
+      sendMessageLogic();
     }
   };
 
@@ -170,8 +172,7 @@ function ChatPage() {
 
   return (
     <>
-      <LogoutIcon /> {/* ✅ agregado acá arriba del todo */}
-
+      <LogoutIcon />
       <Link to="/" className="home-link">
         <FaHome size={15} />
       </Link>

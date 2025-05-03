@@ -11,8 +11,11 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (!loading && user) {
-      localStorage.removeItem('pokerBotLang'); // 🧹 Forzar selección al entrar
-      navigate('/'); // 👉 Redirige siempre al selector de idioma
+      const supportedLangs = ['es', 'en', 'pt'];
+      const browserLang = navigator.language.slice(0, 2);
+      const lang = supportedLangs.includes(browserLang) ? browserLang : 'es';
+      localStorage.setItem('pokerBotLang', lang);
+      navigate(`/chat/${lang}`);
     }
   }, [user, loading, navigate]);
 
