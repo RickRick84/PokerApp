@@ -7,17 +7,12 @@ import { useEffect } from 'react';
 
 const LoginPage = () => {
   const { user, loading } = useAuth();
-  console.log("🔥 USER DESDE LOGINPAGE:", user);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!loading && user) {
-      const lang = localStorage.getItem('pokerBotLang');
-      if (lang) {
-        navigate(`/chat/${lang}`);
-      } else {
-        navigate('/');
-      }
+      localStorage.removeItem('pokerBotLang'); // 🧹 Forzar selección al entrar
+      navigate('/'); // 👉 Redirige siempre al selector de idioma
     }
   }, [user, loading, navigate]);
 
