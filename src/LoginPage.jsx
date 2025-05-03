@@ -10,15 +10,11 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) {
+    if (!loading && user) {
       const lang = localStorage.getItem('pokerBotLang');
-      if (lang) {
-        navigate(`/chat/${lang}`);
-      } else {
-        navigate('/'); // va a HomePage para elegir idioma
-      }
+      navigate(lang ? `/chat/${lang}` : '/');
     }
-  }, [user, navigate]);
+  }, [user, loading, navigate]);
   
   if (loading) return <p className="loading-text">Cargando...</p>;
 
