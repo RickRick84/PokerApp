@@ -1,3 +1,4 @@
+// src/LoginPage.jsx
 import { useAuth } from './AuthContext';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
@@ -7,7 +8,6 @@ import { useEffect } from 'react';
 
 const LoginPage = () => {
   const { user, loading } = useAuth();
-  console.log("🔥 USER DESDE LOGINPAGE:", user);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const LoginPage = () => {
       }
     }
   }, [user, loading, navigate]);
-  
+
   if (loading) return <p className="loading-text">Cargando...</p>;
 
   return (

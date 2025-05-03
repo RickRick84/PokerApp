@@ -4,6 +4,8 @@ import {
   GoogleAuthProvider,
   signInWithRedirect,
   signInWithEmailAndPassword,
+  setPersistence,
+  browserLocalPersistence,
 } from 'firebase/auth';
 import { auth } from './firebaseConfig';
 
@@ -18,6 +20,7 @@ const LoginForm = () => {
     setError(null);
     setLoadingGoogle(true);
     try {
+      await setPersistence(auth, browserLocalPersistence);
       const provider = new GoogleAuthProvider();
       await signInWithRedirect(auth, provider);
     } catch (err) {
@@ -32,6 +35,7 @@ const LoginForm = () => {
     setError(null);
     setLoadingEmail(true);
     try {
+      await setPersistence(auth, browserLocalPersistence);
       await signInWithEmailAndPassword(auth, email, password);
     } catch (err) {
       console.error('Error al iniciar con correo:', err.message);
