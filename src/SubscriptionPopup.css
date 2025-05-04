@@ -16,16 +16,19 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  max-width: 95vw; /* evita que se pase horizontalmente */
 }
 
 .popup-card {
-  max-height: 90vh;     /* limita a 90% de la altura de la pantalla */
-  overflow-y: auto;     /* si se pasa, agrega scroll */
-  top: 50%;
-  transform: translateY(-50%);  /* centra verticalmente */
-  position: fixed;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem; /* espacio interno extra para no pegar al borde */
+  border-radius: 16px;
+  background: #1a1a1a;
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
 }
 
+/* Botón de cierre */
 .close-btn {
   position: absolute;
   top: 12px;

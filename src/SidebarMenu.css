@@ -1,9 +1,8 @@
-/* Sidebar completo */
+/* Sidebar base (desde la derecha) */
 .sidebar {
   position: fixed;
   top: 0;
   right: 0;
-  left: auto;
   height: 100vh;
   background-color: #121212;
   color: white;
@@ -11,12 +10,12 @@
   width: 260px;
   transition: transform 0.3s ease;
   z-index: 1000;
-  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Estado cerrado */
+/* Estado cerrado desde la derecha */
 .sidebar.closed {
-  transform: translateX(-100%);
+  transform: translateX(100%);
 }
 
 /* Estado abierto */
@@ -24,7 +23,7 @@
   transform: translateX(0);
 }
 
-/* Lista del menú */
+/* Lista de elementos */
 .sidebar-list {
   list-style: none;
   padding: 0;
@@ -39,19 +38,22 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .sidebar-list li:hover {
   background-color: #00ff88;
   color: #000;
-  transform: scale(1.05); /* Sutil zoom */
+  transform: scale(1.05);
 }
 
 /* Botón de apertura/cierre (solapa) */
 .toggle-button {
   position: absolute;
   top: 10px;
-  left: -30px;
+  left: -30px; /* sobresale desde la derecha */
   background: #1b1b1b;
   border: 2px solid #00ff88;
   color: white;

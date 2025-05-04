@@ -23,9 +23,9 @@ const SidebarMenu = ({ currentLang, setShowPopup }) => {
   const toggleSidebar = () => setIsOpen(!isOpen);
 
   return (
-    <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
+    <div className={`sidebar right ${isOpen ? 'open' : 'closed'}`}>
       <button className="toggle-button" onClick={toggleSidebar}>
-        {isOpen ? <FiChevronLeft size={24} /> : <FiChevronRight size={24} />}
+        {isOpen ? <FiChevronRight size={24} /> : <FiChevronLeft size={24} />}
       </button>
 
       {isOpen && (
