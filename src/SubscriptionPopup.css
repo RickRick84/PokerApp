@@ -54,15 +54,15 @@
 
 .plans {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* importante para que se vea horizontal */
   gap: 1.5rem;
   margin-top: 2rem;
+  justify-content: center;
 }
 
 @media (max-width: 700px) {
-  .popup-container {
+  .plans {
     flex-direction: column;
-    gap: 1.5rem;
   }
 
   .popup-card {

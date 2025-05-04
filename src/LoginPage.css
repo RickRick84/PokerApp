@@ -1,10 +1,11 @@
 .auth-form-container {
-  max-width: 480px;
-  margin: 3rem auto;
+  max-width: 460px;
+  width: 90%;
+  margin: 4rem auto;
   padding: 2rem;
-  background-color: rgba(0, 0, 0, 0.75);
-  border-radius: 16px;
-  box-shadow: 0 0 25px rgba(0, 255, 136, 0.2);
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 18px;
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.25);
 }
 
 .auth-forms {
@@ -26,6 +27,14 @@ button {
   width: 100%;
   border-radius: 8px;
   font-weight: bold;
+  background-color: #00ff88;
+  color: #000;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #00e07a;
 }
 
 .user-logged-in {
@@ -49,25 +58,25 @@ button {
   margin-top: 4rem;
 }
 
-@media (max-width: 768px) {
+/* MEDIA QUERY */
+@media (max-width: 600px) {
   .auth-form-container {
-    width: 90%;
-    padding: 1.2rem;
-    margin: 1.5rem auto;
+    width: 92%;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border-radius: 14px;
   }
 
   input {
-    padding: 0.7rem;
     font-size: 0.95rem;
   }
 
   button {
-    font-size: 1rem;
-    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+    padding: 0.7rem;
   }
 
   .welcome-text {
     font-size: 1rem;
   }
 }
-
