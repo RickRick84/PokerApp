@@ -581,7 +581,7 @@ function ChatPage() {
   return (
     <>
       <LogoutIcon />
-      <SidebarMenu currentLang={currentLang} />
+      <SidebarMenu currentLang={currentLang} setShowPopup={setShowPopup}/>
       <Link to="/" className="home-link"><FaHome size={15} /></Link>
   
       {isAdmin && <div style={{ padding: '1rem', textAlign: 'center' }}><AdminControls /></div>}
@@ -615,8 +615,8 @@ function ChatPage() {
       </div>
       
       {showPopup && (
-  <div className="subscription-popup-overlay">
-    <div className="subscription-popup">
+  <div className="popup-overlay">
+    <div className="popup-card">
       <h2>{t.choosePlan}</h2>
       <p>{t.selectOne}</p>
       <div className="plan-options">
@@ -644,7 +644,7 @@ function ChatPage() {
           <button onClick={() => alert(t.comingSoon)}>{t.pickPlan}</button>
         </div>
       </div>
-      <button className="close-popup-button" onClick={() => setShowPopup(false)}>X</button>
+      <button className="close-btn" onClick={() => setShowPopup(false)}>X</button>
     </div>
   </div>
 )}

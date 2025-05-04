@@ -5,7 +5,7 @@ import './SidebarMenu.css';
 // ICONOS
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
-const SidebarMenu = ({ currentLang }) => {
+const SidebarMenu = ({ currentLang, setShowPopup }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isOpen, setIsOpen] = useState(window.innerWidth > 768);
 
@@ -35,12 +35,12 @@ const SidebarMenu = ({ currentLang }) => {
       {/* Lista de botones visibles solo si está abierto */}
       {isOpen && (
         <ul className="sidebar-list">
-          <li>{labels.shop}</li>
-          <li>{labels.pokerTrips}</li>
-          <li>{labels.buyTickets}</li>
-          <li>{labels.giveaways}</li>
-          <li>{labels.games}</li>
-          <li>{labels.calendar}</li>
+          <li onClick={() => setShowPopup(true)}>{labels.shop}</li>
+          <li onClick={() => setShowPopup(true)}>{labels.pokerTrips}</li>
+          <li onClick={() => setShowPopup(true)}>{labels.buyTickets}</li>
+          <li onClick={() => setShowPopup(true)}>{labels.giveaways}</li>
+          <li onClick={() => setShowPopup(true)}>{labels.games}</li>
+          <li onClick={() => setShowPopup(true)}>{labels.calendar}</li>
         </ul>
       )}
     </div>
