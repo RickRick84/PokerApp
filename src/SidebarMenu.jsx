@@ -13,21 +13,19 @@ const SidebarMenu = ({ currentLang, setShowPopup }) => {
     const handleResize = () => {
       const mobile = window.innerWidth <= 768;
       setIsMobile(mobile);
-      // No forzar open en resize, respetar estado actual:
-      // setIsOpen(!mobile); → esto lo eliminamos
+      setIsOpen(!mobile);
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const labels = buttons[currentLang] || buttons.en;
-
   const toggleSidebar = () => setIsOpen(!isOpen);
 
   return (
     <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
       <button className="toggle-button" onClick={toggleSidebar}>
-        {isOpen ? <FiChevronLeft size={24} /> : <FiChevronRight size={24} />}
+        {isOpen ? <FiChevronRight size={24} /> : <FiChevronLeft size={24} />}
       </button>
 
       {isOpen && (

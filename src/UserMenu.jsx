@@ -47,11 +47,6 @@ function UserMenu() {
   const browserLang = navigator.language?.slice(0, 2) || 'en';
   const newsLabel = t.news[browserLang] || t.news.en;
 
-  const handleLogout = async () => {
-    await logout();
-    navigate('/login');
-  };
-
   return (
     <div className="user-menu" ref={menuRef}>
       <img
@@ -66,7 +61,7 @@ function UserMenu() {
           <div onClick={() => alert('Settings')}><FaCogs /> {t.settings}</div>
           <div onClick={() => alert('Poker Bet')}><GiPokerHand /> {t.pokerBet}</div>
           <div onClick={() => alert('News')}><FaNewspaper /> {newsLabel}</div>
-          <div onClick={handleLogout}><FaSignOutAlt /> {t.signOut}</div>
+          <div onClick={() => { logout(); navigate("/login"); }}><FaSignOutAlt /> {t.signOut}</div>
         </div>
       )}
     </div>
