@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Navigate, Link } from 'react-router-dom';
 import { FaHome, FaPaperPlane } from 'react-icons/fa';
 import AdminControls from './AdminControls';
-import LogoutIcon from './LogoutIcon';
+import UserMenu from './UserMenu';
 import './App.css';
 import buttons from './buttonLabels';
 import SidebarMenu from './SidebarMenu';
