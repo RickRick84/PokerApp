@@ -52,14 +52,20 @@
 /* Botón de apertura/cierre (solapa) */
 .toggle-button {
   position: absolute;
-  top: 10px;
-  left: -30px; /* sobresale desde la derecha */
-  background: #1b1b1b;
-  border: 2px solid #00ff88;
-  color: white;
-  padding: 6px;
+  top: 15px;
+  left: -28px;
+  background: #00ff88;
+  color: black;
+  border: none;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
   z-index: 10010;
 }
 
@@ -73,14 +79,21 @@
     padding: 0.8rem;
   }
 
+  .sidebar-list {
+    margin-top: 2rem;
+  }
+
   .sidebar-list li {
     font-size: 0.95rem;
-    padding: 0.5rem 0.8rem;
+    padding: 0.6rem 0.8rem;
+    gap: 8px;
   }
 
   .toggle-button {
-    top: 8px;
-    left: -26px;
-    padding: 5px;
+    top: 10px;
+    left: -24px;
+    width: 26px;
+    height: 26px;
+    font-size: 13px;
   }
 }

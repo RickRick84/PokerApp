@@ -1,7 +1,7 @@
 import { useAuth } from './AuthContext';
 import { useState, useEffect, useRef } from 'react';
 import { Navigate, Link } from 'react-router-dom';
-import { FaHome, FaPaperPlane } from 'react-icons/fa';
+import { FaPaperPlane } from 'react-icons/fa';
 import AdminControls from './AdminControls';
 import UserMenu from './UserMenu';
 import './App.css';
@@ -582,7 +582,6 @@ function ChatPage() {
     <>
       <UserMenu />
       <SidebarMenu currentLang={currentLang} setShowPopup={setShowPopup}/>
-      <Link to="/" className="home-link"><FaHome size={15} /></Link>
   
       {isAdmin && <div style={{ padding: '1rem', textAlign: 'center' }}><AdminControls /></div>}
 

@@ -49,26 +49,35 @@ button {
   margin-top: 4rem;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .auth-form-container {
     width: 90%;
     margin: 2rem auto;
     padding: 1.5rem;
-    border-radius: 12px;
+    border-radius: 14px;
+  }
+
+  .auth-forms {
+    gap: 1.2rem;
+  }
+
+  input {
+    font-size: 1rem;
   }
 
   .welcome-text {
     font-size: 1rem;
+    text-align: center;
   }
 
-  .auth-forms {
-    gap: 1.5rem;
-  }
-
-  input,
   button {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    padding: 0.7rem;
+    border-radius: 8px;
+  }
+
+  .user-logged-in {
+    padding: 1.5rem;
+    font-size: 0.95rem;
   }
 }
-
