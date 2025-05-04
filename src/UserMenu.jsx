@@ -66,7 +66,7 @@ function UserMenu() {
         onClick={toggleMenu}
       />
       {open && (
-        <div className="menu-dropdown">
+        <div className={`dropdown-menu ${isOpen ? 'show' : ''}`} style={{ left: 0, right: 'auto' }}>
           <div onClick={() => alert('Account')}><FaUser /> {t.account}</div>
           <div onClick={() => alert('Settings')}><FaCogs /> {t.settings}</div>
           <div onClick={() => alert('Poker Bet')}><GiPokerHand /> {t.pokerBet}</div>

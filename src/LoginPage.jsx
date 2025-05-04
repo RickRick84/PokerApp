@@ -1,6 +1,7 @@
 import { useAuth } from './AuthContext';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
+import './LoginPage.css';
 import LogoutButton from './LogoutButton';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';

@@ -13,20 +13,21 @@
     border: 2px solid #00ff88;
   }
   
-  .menu-dropdown {
-    margin-top: 10px;
-    background: #1b1b1b;
+  .dropdown-menu {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: auto;
+    background-color: #1a1a1a;
     border: 1px solid #00ff88;
     border-radius: 12px;
-    position: absolute;
-    right: 0;
-    width: 200px;
-    box-shadow: 0 0 20px rgba(0,255,136,0.2);
-    opacity: 1;
-    animation: fadeSlideDown 0.2s ease-out;
+    padding: 1rem;
+    z-index: 10020;
+    box-shadow: 0 0 12px rgba(0, 255, 136, 0.2);
   }
   
-  .menu-dropdown div {
+  
+  .dropdown-menu div {
     padding: 12px;
     display: flex;
     align-items: center;
@@ -36,7 +37,7 @@
     transition: background 0.2s;
   }
   
-  .menu-dropdown div:hover {
+  .dropdown-menu div:hover {
     background: rgba(0, 255, 136, 0.1);
   }
   

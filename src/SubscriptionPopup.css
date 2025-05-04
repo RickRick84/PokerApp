@@ -10,14 +10,15 @@
 }
 
 .popup-container {
-  max-width: 90vw;
-  max-height: 80vh;
+  max-width: 95vw;
+  max-height: 85vh;
   background: white;
   color: #000;
   padding: 2rem;
-  border-radius: 18px;
+  border-radius: 20px;
   box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
   overflow-x: auto;
+  overflow-y: hidden;
   display: flex;
   flex-direction: row;
   gap: 2rem;
@@ -25,16 +26,19 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  animation: popupFadeIn 0.3s ease-in-out;
 }
 
 .popup-card {
   min-width: 280px;
-  flex-shrink: 0;
+  flex: 0 0 auto;
   background: #f9f9f9;
+  color: #000;
   border-radius: 16px;
   padding: 2rem;
+  border: 2px solid #00ff88;
+  text-align: center;
   box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
-  overflow-y: auto;
 }
 
 .close-btn {
