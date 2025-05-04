@@ -2,7 +2,8 @@
 .sidebar {
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
+  left: auto;
   height: 100vh;
   background-color: #121212;
   color: white;
@@ -50,7 +51,8 @@
 .toggle-button {
   position: fixed;
   top: 20px;
-  left: 0;
+  left: auto;
+  right: 0;
   background-color: #00ff88;
   color: #000;
   border: none;
