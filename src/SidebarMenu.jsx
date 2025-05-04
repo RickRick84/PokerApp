@@ -13,7 +13,8 @@ const SidebarMenu = ({ currentLang, setShowPopup }) => {
     const handleResize = () => {
       const mobile = window.innerWidth <= 768;
       setIsMobile(mobile);
-      setIsOpen(!mobile);
+      // No forzar open en resize, respetar estado actual:
+      // setIsOpen(!mobile); → esto lo eliminamos
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -25,11 +26,9 @@ const SidebarMenu = ({ currentLang, setShowPopup }) => {
 
   return (
     <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
-      {isMobile && (
-        <button className="toggle-button" onClick={toggleSidebar}>
-          {isOpen ? <FiChevronLeft size={24} /> : <FiChevronRight size={24} />}
-        </button>
-      )}
+      <button className="toggle-button" onClick={toggleSidebar}>
+        {isOpen ? <FiChevronLeft size={24} /> : <FiChevronRight size={24} />}
+      </button>
 
       {isOpen && (
         <ul className="sidebar-list">
@@ -39,12 +38,8 @@ const SidebarMenu = ({ currentLang, setShowPopup }) => {
           <li onClick={() => setShowPopup(true)}>{labels.giveaways}</li>
           <li onClick={() => setShowPopup(true)}>{labels.games}</li>
           <li onClick={() => setShowPopup(true)}>{labels.calendar}</li>
-          <li onClick={() => setShowPopup(true)}>
-            <GiPokerHand /> {labels.pokerBet}
-          </li>
-          <li onClick={() => setShowPopup(true)}>
-            <FaNewspaper /> {labels.news}
-          </li>
+          <li onClick={() => setShowPopup(true)}><GiPokerHand /> {labels.pokerBet}</li>
+          <li onClick={() => setShowPopup(true)}><FaNewspaper /> {labels.news}</li>
         </ul>
       )}
     </div>

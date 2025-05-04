@@ -41,12 +41,16 @@ function UserMenu() {
       ar: 'أخبار',
       pt: 'Notícias',
       tr: 'Haberler',
-      // suma más si querés
     },
   };
 
   const browserLang = navigator.language?.slice(0, 2) || 'en';
   const newsLabel = t.news[browserLang] || t.news.en;
+
+  const handleLogout = async () => {
+    await logout();
+    navigate('/login');
+  };
 
   return (
     <div className="user-menu" ref={menuRef}>
@@ -62,7 +66,7 @@ function UserMenu() {
           <div onClick={() => alert('Settings')}><FaCogs /> {t.settings}</div>
           <div onClick={() => alert('Poker Bet')}><GiPokerHand /> {t.pokerBet}</div>
           <div onClick={() => alert('News')}><FaNewspaper /> {newsLabel}</div>
-          <div onClick={logout}><FaSignOutAlt /> {t.signOut}</div>
+          <div onClick={handleLogout}><FaSignOutAlt /> {t.signOut}</div>
         </div>
       )}
     </div>

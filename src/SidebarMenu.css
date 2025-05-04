@@ -49,19 +49,16 @@
 
 /* Botón de apertura/cierre (solapa) */
 .toggle-button {
-  position: fixed;
-  top: 20px;
-  left: auto;
-  right: 0;
-  background-color: #00ff88;
-  color: #000;
-  border: none;
-  border-radius: 0 8px 8px 0;
-  padding: 0.6rem 0.8rem;
-  z-index: 1100;
+  position: absolute;
+  top: 10px;
+  left: -30px;
+  background: #1b1b1b;
+  border: 2px solid #00ff88;
+  color: white;
+  padding: 6px;
+  border-radius: 50%;
   cursor: pointer;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-  transition: background-color 0.2s ease;
+  z-index: 10010;
 }
 
 .toggle-button:hover {
