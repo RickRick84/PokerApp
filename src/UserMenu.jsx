@@ -61,7 +61,7 @@ function UserMenu() {
           <div onClick={() => alert('Settings')}><FaCogs /> {t.settings}</div>
           <div onClick={() => alert('Poker Bet')}><GiPokerHand /> {t.pokerBet}</div>
           <div onClick={() => alert('News')}><FaNewspaper /> {newsLabel}</div>
-          <div onClick={() => { logout(); navigate("/login"); }}><FaSignOutAlt /> {t.signOut}</div>
+          <div onClick={() => { logout().then(() => navigate("/login")); }}><FaSignOutAlt /> {t.signOut}</div>
         </div>
       )}
     </div>
