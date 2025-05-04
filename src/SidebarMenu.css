@@ -66,3 +66,21 @@
 .toggle-button:hover {
   background-color: #00e07a;
 }
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 220px;
+    padding: 0.8rem;
+  }
+
+  .sidebar-list li {
+    font-size: 0.95rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .toggle-button {
+    top: 8px;
+    left: -26px;
+    padding: 5px;
+  }
+}

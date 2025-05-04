@@ -353,18 +353,18 @@ body {
   font-weight: bold;
 }
 
-/* Responsive */
+/* Responsive para móviles */
 @media only screen and (max-width: 768px) {
   body {
     background-position: center top;
-    height: 100vh;
-    overflow: hidden;
+    height: auto;
+    overflow-x: hidden; /* permite scroll vertical, bloquea solo horizontal */
   }
 
   .app.chat-page-container {
     position: relative;
     transform: none;
-    height: auto;
+    min-height: 100vh;
     max-height: none;
     overflow-y: auto;
     padding: 1rem;
@@ -372,14 +372,13 @@ body {
 
   .chat-box {
     width: 100%;
-    max-width: none;
     margin-top: -30px;
-    height: 400px;
+    max-height: 70vh;
+    overflow-y: auto;
   }
 
   .input-bar {
     width: 100%;
-    max-width: none;
     gap: 0.3rem;
     padding: 0.4rem;
     margin-top: 8px;
@@ -402,23 +401,10 @@ body {
     flex-direction: column;
     gap: 1.5rem;
   }
-}
 
-/* Logout fijo arriba a la derecha */
-.logout-icon {
-  position: fixed;
-  top: 15px;
-  left: 15px;
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  padding: 8px;
-  cursor: pointer;
-  z-index: 11000;
+  .logout-icon {
+    top: 10px;
+    left: 10px;
+    padding: 6px;
+  }
 }
-
-.logout-icon:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-

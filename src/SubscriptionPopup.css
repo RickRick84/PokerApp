@@ -10,23 +10,19 @@
 }
 
 .popup-container {
-  max-width: 95vw;
-  max-height: 85vh;
+  max-width: 700px;
+  width: 90%;
   background: white;
   color: #000;
   padding: 2rem;
   border-radius: 20px;
   box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
-  overflow-x: auto;
-  overflow-y: hidden;
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
+  overflow-y: auto;
+  max-height: 85vh;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: popupFadeIn 0.3s ease-in-out;
 }
 
 .popup-card {
@@ -100,6 +96,28 @@ button {
 
 button:hover {
   background-color: #00e07a;
+}
+
+@media (max-width: 600px) {
+  .popup-container {
+    width: 95%;
+    max-width: 95%;
+    padding: 1.2rem;
+    border-radius: 16px;
+  }
+
+  .popup-card {
+    padding: 1.2rem;
+    min-width: 240px;
+  }
+
+  .price {
+    font-size: 1.3rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+  }
 }
 
 /* Animaciones */

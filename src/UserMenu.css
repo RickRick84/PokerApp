@@ -13,20 +13,20 @@
     border: 2px solid #00ff88;
   }
   
-  .dropdown-menu {
+  .dropdown-menu.left-align {
     position: absolute;
     top: 50px;
     left: 0;
     right: auto;
-    background-color: #1a1a1a;
-    border: 1px solid #00ff88;
+    background: rgba(0, 0, 0, 0.95);
+    color: white;
     border-radius: 12px;
     padding: 1rem;
-    z-index: 10020;
-    box-shadow: 0 0 12px rgba(0, 255, 136, 0.2);
+    box-shadow: 0 0 12px rgba(0, 255, 136, 0.3);
+    z-index: 10000;
   }
   
-  
+
   .dropdown-menu div {
     padding: 12px;
     display: flex;

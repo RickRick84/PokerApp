@@ -1,24 +1,31 @@
 .auth-form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  max-width: 480px;
+  margin: 3rem auto;
   padding: 2rem;
-  background: none;
-  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0, 255, 136, 0.2);
 }
 
 .auth-forms {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+input {
   width: 100%;
-  max-width: 420px;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 1rem;
+}
+
+button {
+  padding: 0.8rem;
+  width: 100%;
+  border-radius: 8px;
+  font-weight: bold;
 }
 
 .user-logged-in {
@@ -43,14 +50,25 @@
 }
 
 /* Responsive */
-@media (max-width: 480px) {
-  .auth-forms {
+@media (max-width: 600px) {
+  .auth-form-container {
+    width: 90%;
+    margin: 2rem auto;
     padding: 1.5rem;
-    gap: 1.5rem;
-    max-width: 90%;
+    border-radius: 12px;
   }
 
   .welcome-text {
     font-size: 1rem;
   }
+
+  .auth-forms {
+    gap: 1.5rem;
+  }
+
+  input,
+  button {
+    font-size: 0.9rem;
+  }
 }
+
