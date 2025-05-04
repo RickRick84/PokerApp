@@ -1,16 +1,17 @@
 .auth-form-container {
   max-width: 480px;
-  margin: 3rem auto;
+  margin: 4rem auto;
   padding: 2rem;
   background-color: rgba(0, 0, 0, 0.75);
   border-radius: 16px;
   box-shadow: 0 0 25px rgba(0, 255, 136, 0.2);
+  width: 90%;
 }
 
 .auth-forms {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 input {
@@ -19,6 +20,8 @@ input {
   border-radius: 8px;
   border: none;
   margin-bottom: 1rem;
+  background-color: #222;
+  color: white;
 }
 
 button {
@@ -26,6 +29,15 @@ button {
   width: 100%;
   border-radius: 8px;
   font-weight: bold;
+  cursor: pointer;
+  background-color: #00ff88;
+  color: black;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #00e07a;
 }
 
 .user-logged-in {
@@ -34,6 +46,9 @@ button {
   padding: 2rem;
   border-radius: 16px;
   box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+  width: 90%;
+  max-width: 480px;
+  margin: 4rem auto;
 }
 
 .welcome-text {
@@ -49,35 +64,22 @@ button {
   margin-top: 4rem;
 }
 
+/* MOBILE */
 @media (max-width: 768px) {
   .auth-form-container {
-    width: 90%;
     margin: 2rem auto;
     padding: 1.5rem;
-    border-radius: 14px;
   }
 
   .auth-forms {
     gap: 1.2rem;
   }
 
-  input {
-    font-size: 1rem;
-  }
-
   .welcome-text {
     font-size: 1rem;
-    text-align: center;
   }
 
   button {
-    font-size: 0.95rem;
-    padding: 0.7rem;
-    border-radius: 8px;
-  }
-
-  .user-logged-in {
-    padding: 1.5rem;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 }

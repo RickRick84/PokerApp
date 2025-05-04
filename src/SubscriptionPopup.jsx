@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './SubscriptionPopup.css';
 import { useAuth } from './AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { FaTimes } from 'react-icons/fa';
 
 function SubscriptionPopup({ onClose, translations, lang }) {
   const [isAnnual, setIsAnnual] = useState(false);
@@ -24,7 +25,9 @@ function SubscriptionPopup({ onClose, translations, lang }) {
   return (
     <div className="popup-overlay">
       <div className="popup-card">
-        <button className="close-btn" onClick={handleLogout}>X</button>
+      <button className="close-btn" onClick={handleLogout}>
+  <FaTimes />
+</button>
         <h2>{t.choosePlan}</h2>
         <p>{t.selectOne}</p>
 

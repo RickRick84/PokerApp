@@ -10,59 +10,81 @@
 }
 
 .popup-container {
-  max-width: 800px;
-  width: 90%;
-  background: white;
-  color: #000;
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
-  max-height: 80vh;
+  max-height: 90vh;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  max-width: 95vw; /* evita que se pase horizontalmente */
 }
 
 .popup-card {
-  min-width: 280px;
+  width: 300px;
   flex: 0 0 auto;
   background: #f9f9f9;
   color: #000;
   border-radius: 16px;
-  padding: 2rem;
-  border: 2px solid #00ff88;
+  padding: 1.8rem;
+  border: 2px solid #04c46a00;
   text-align: center;
-  box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.103);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
+/* Botón de cierre */
 .close-btn {
   position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 1.4rem;
+  top: 14px;
+  right: 14px;
   background: none;
   border: none;
-  color: #00b86b;
+  color: #333;
+  font-size: 1.5rem;
   cursor: pointer;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #e91e63;
+}
+
+.plans {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 700px) {
+  .popup-container {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .popup-card {
+    width: 90%;
+    max-width: 340px;
+  }
 }
 
 .plan {
-  border: 2px solid #00ff88;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid #06201400;
   border-radius: 12px;
   padding: 1.5rem;
-  text-align: center;
-  background-color: white;
-  box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
   transition: transform 0.2s ease-in-out;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 255, 136, 0.2);
 }
 
 .plan:hover {
-  transform: scale(1.03);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 255, 136, 0.3);
 }
 
 .plan.pro {
@@ -72,13 +94,13 @@
 .price {
   font-size: 1.6rem;
   margin-bottom: 0.5rem;
-  color: #00b86b;
+  color: #00ff88;
 }
 
 .price span {
   display: block;
   font-size: 0.9rem;
-  color: #555;
+  color: #ccc;
 }
 
 .plan h3 {
@@ -87,7 +109,7 @@
 
 button {
   margin-top: 1rem;
-  background-color: #00ff88;
+  background-color: #11352400;
   color: #000;
   padding: 0.7rem 1.5rem;
   border: none;
@@ -98,48 +120,81 @@ button {
 }
 
 button:hover {
-  background-color: #00e07a;
+  background-color: #043a2200;
 }
 
-@media (max-width: 768px) {
-  .popup-container {
-    width: 95%;
-    max-width: 95%;
-    padding: 1.5rem;
-    border-radius: 20px;
-    flex-direction: column;
-    align-items: center;
-  }
+.toggle-switch {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: #fff;
+}
 
-  .popup-card {
-    width: 100%;
-    padding: 1.2rem;
-    min-width: unset;
-  }
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
 
-  .price {
-    font-size: 1.3rem;
-  }
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 
-  .plan {
-    padding: 1.2rem;
-    margin-bottom: 1.5rem;
-  }
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 24px;
+  transition: 0.4s;
+}
 
-  .close-btn {
-    top: 12px;
-    right: 16px;
-    font-size: 1.2rem;
-  }
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
 
-  button {
-    font-size: 0.95rem;
-    padding: 0.7rem 1.2rem;
-  }
+input:checked + .slider {
+  background-color: #04311c44;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
 }
 
 /* Animaciones */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
