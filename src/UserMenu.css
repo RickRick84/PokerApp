@@ -22,6 +22,8 @@
     right: 0;
     width: 200px;
     box-shadow: 0 0 20px rgba(0,255,136,0.2);
+    opacity: 1;
+    animation: fadeSlideDown 0.2s ease-out;
   }
   
   .menu-dropdown div {
@@ -36,5 +38,16 @@
   
   .menu-dropdown div:hover {
     background: rgba(0, 255, 136, 0.1);
+  }
+  
+  @keyframes fadeSlideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   

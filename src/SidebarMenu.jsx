@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import buttons from './buttonLabels';
 import './SidebarMenu.css';
-
-// ICONOS
+import { GiPokerHand } from 'react-icons/gi';
+import { FaNewspaper } from 'react-icons/fa';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 const SidebarMenu = ({ currentLang, setShowPopup }) => {
@@ -25,14 +25,12 @@ const SidebarMenu = ({ currentLang, setShowPopup }) => {
 
   return (
     <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
-      {/* Botón de solapa para mobile */}
       {isMobile && (
         <button className="toggle-button" onClick={toggleSidebar}>
           {isOpen ? <FiChevronLeft size={24} /> : <FiChevronRight size={24} />}
         </button>
       )}
 
-      {/* Lista de botones visibles solo si está abierto */}
       {isOpen && (
         <ul className="sidebar-list">
           <li onClick={() => setShowPopup(true)}>{labels.shop}</li>
@@ -41,6 +39,12 @@ const SidebarMenu = ({ currentLang, setShowPopup }) => {
           <li onClick={() => setShowPopup(true)}>{labels.giveaways}</li>
           <li onClick={() => setShowPopup(true)}>{labels.games}</li>
           <li onClick={() => setShowPopup(true)}>{labels.calendar}</li>
+          <li onClick={() => setShowPopup(true)}>
+            <GiPokerHand /> {labels.pokerBet}
+          </li>
+          <li onClick={() => setShowPopup(true)}>
+            <FaNewspaper /> {labels.news}
+          </li>
         </ul>
       )}
     </div>

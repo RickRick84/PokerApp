@@ -580,7 +580,7 @@ function ChatPage() {
 
   return (
     <>
-      <LogoutIcon />
+      <UserMenu />
       <SidebarMenu currentLang={currentLang} setShowPopup={setShowPopup}/>
       <Link to="/" className="home-link"><FaHome size={15} /></Link>
   
