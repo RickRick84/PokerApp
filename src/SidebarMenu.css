@@ -1,38 +1,67 @@
+/* Sidebar completo */
 .sidebar {
-    background-color: #121212;
-    color: white;
-    padding: 1rem;
-    width: 250px;
-    transition: transform 0.3s ease;
-    z-index: 10;
-  }
-  
-  .sidebar.closed {
-    transform: translateX(-100%);
-    position: absolute;
-  }
-  
-  .sidebar.open {
-    transform: translateX(0);
-    position: absolute;
-  }
-  
-  .toggle-button {
-    background: #333;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    margin-bottom: 1rem;
-    cursor: pointer;
-  }
-  
-  .sidebar-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar-list li {
-    margin-bottom: 1rem;
-    cursor: pointer;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background-color: #121212;
+  color: white;
+  padding: 1rem;
+  width: 260px;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estado cerrado */
+.sidebar.closed {
+  transform: translateX(-100%);
+}
+
+/* Estado abierto */
+.sidebar.open {
+  transform: translateX(0);
+}
+
+/* Lista del menú */
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 3rem;
+}
+
+.sidebar-list li {
+  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+  padding: 0.6rem 1rem;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.sidebar-list li:hover {
+  background-color: #00ff88;
+  color: #000;
+  transform: scale(1.05); /* Sutil zoom */
+}
+
+/* Botón de apertura/cierre (solapa) */
+.toggle-button {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  background-color: #00ff88;
+  color: #000;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  padding: 0.6rem 0.8rem;
+  z-index: 1100;
+  cursor: pointer;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  transition: background-color 0.2s ease;
+}
+
+.toggle-button:hover {
+  background-color: #00e07a;
+}

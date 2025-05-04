@@ -510,15 +510,9 @@ function ChatPage() {
     if (!input.trim()) return;
     const MAX_FREE_QUESTIONS = 3;
     if (getTodayCount() >= MAX_FREE_QUESTIONS) {
-      setMessages((msgs) => [
-        ...msgs,
-        {
-          role: 'assistant',
-          content: `${t.fetchError} Ya hiciste 3 preguntas hoy. Para seguir, suscribite o volvé mañana 😉`,
-        },
-      ]);
+      setShowPopup(true); // 👉 activa el popup
       return;
-    }
+    }    
 
     const userMessage = { role: 'user', content: input };
     setMessages((msgs) => [...msgs, userMessage]);
@@ -582,6 +576,7 @@ function ChatPage() {
       sendMessageLogic();
     }
   };
+  const [showPopup, setShowPopup] = useState(false);
 
   return (
     <>
@@ -618,6 +613,41 @@ function ChatPage() {
           </button>
         </div>
       </div>
+      
+      {showPopup && (
+  <div className="subscription-popup-overlay">
+    <div className="subscription-popup">
+      <h2>{t.choosePlan}</h2>
+      <p>{t.selectOne}</p>
+      <div className="plan-options">
+        <div className="plan-card">
+          <h3>Basic</h3>
+          <p>$9 / {t.month}</p>
+          <p>$86.40 / {t.year} (20%)</p>
+          <ul>
+            <li>{t.basicLimit}</li>
+            <li>{t.oneTeam}</li>
+            <li>{t.support}</li>
+          </ul>
+          <button onClick={() => alert(t.comingSoon)}>{t.pickPlan}</button>
+        </div>
+        <div className="plan-card">
+          <h3>Pro</h3>
+          <p>$29 / {t.month}</p>
+          <p>$243.60 / {t.year} (30%)</p>
+          <ul>
+            <li>{t.proLimit}</li>
+            <li>{t.unlimitedUsers}</li>
+            <li>{t.prioritySupport}</li>
+            <li>{t.exclusiveContent}</li>
+          </ul>
+          <button onClick={() => alert(t.comingSoon)}>{t.pickPlan}</button>
+        </div>
+      </div>
+      <button className="close-popup-button" onClick={() => setShowPopup(false)}>X</button>
+    </div>
+  </div>
+)}
     </>
   );
 }
