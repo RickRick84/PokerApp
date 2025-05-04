@@ -1,0 +1,38 @@
+.sidebar {
+    background-color: #121212;
+    color: white;
+    padding: 1rem;
+    width: 250px;
+    transition: transform 0.3s ease;
+    z-index: 10;
+  }
+  
+  .sidebar.closed {
+    transform: translateX(-100%);
+    position: absolute;
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+    position: absolute;
+  }
+  
+  .toggle-button {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+  
+  .sidebar-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar-list li {
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+  
