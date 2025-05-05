@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 
 import ChatPage from './ChatPage';
 import LoginPage from './LoginPage';
-import SubscriptionPopup from './SubscriptionPopup';
 import { AuthProvider, useAuth } from './AuthContext';
 
 const ProtectedRoute = ({ element }) => {
@@ -23,7 +22,6 @@ function AppRoutes() {
       <Route path="/" element={user ? <Navigate to="/chat" replace /> : <LoginPage />} />
       <Route path="/login" element={user ? <Navigate to="/chat" replace /> : <LoginPage />} />
       <Route path="/chat" element={<ProtectedRoute element={<ChatPage />} />} />
-      <Route path="/suscripciones" element={<ProtectedRoute element={<SubscriptionPopup />} />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

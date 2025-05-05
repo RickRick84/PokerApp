@@ -560,7 +560,24 @@ function ChatPage() {
     <>
       <UserMenu />
       <SidebarMenu currentLang={currentLang} setShowPopup={setShowPopup} />
-  
+      
+      {showPopup && (
+  <div className="popup-overlay" onClick={() => setShowPopup(false)}>
+    <img
+      src="/popup_image_poker_plans_.jpg"
+      alt="Poker Plans"
+      style={{
+        maxWidth: '90vw',
+        maxHeight: '90vh',
+        borderRadius: '20px',
+        boxShadow: '0 0 30px rgba(0,0,0,0.7)',
+        cursor: 'pointer'
+      }}
+    />
+  </div>
+)}
+
+
       {isAdmin && (
         <div style={{ padding: '1rem', textAlign: 'center' }}>
           <AdminControls />
@@ -600,41 +617,6 @@ function ChatPage() {
           </button>
         </div>
       </div>
-  
-      {showPopup && (
-        <div className="popup-overlay">
-          <div className="popup-card">
-            <h2>{t.choosePlan}</h2>
-            <p>{t.selectOne}</p>
-            <div className="plan-options">
-              <div className="plan-card">
-                <h3>Basic</h3>
-                <p>$9 / {t.month}</p>
-                <p>$86.40 / {t.year} (20%)</p>
-                <ul>
-                  <li>{t.basicLimit}</li>
-                  <li>{t.oneTeam}</li>
-                  <li>{t.support}</li>
-                </ul>
-                <button onClick={() => alert(t.comingSoon)}>{t.pickPlan}</button>
-              </div>
-              <div className="plan-card">
-                <h3>Pro</h3>
-                <p>$29 / {t.month}</p>
-                <p>$243.60 / {t.year} (30%)</p>
-                <ul>
-                  <li>{t.proLimit}</li>
-                  <li>{t.unlimitedUsers}</li>
-                  <li>{t.prioritySupport}</li>
-                  <li>{t.exclusiveContent}</li>
-                </ul>
-                <button onClick={() => alert(t.comingSoon)}>{t.pickPlan}</button>
-              </div>
-            </div>
-            <button className="close-btn" onClick={() => setShowPopup(false)}>X</button>
-          </div>
-        </div>
-      )}
     </>
   );
 }
