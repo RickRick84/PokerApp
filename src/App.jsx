@@ -9,7 +9,7 @@ import { AuthProvider, useAuth } from './AuthContext';
 const ProtectedRoute = ({ element }) => {
   const { user, loading } = useAuth();
   if (loading) return <p>Cargando...</p>;
-  return user ? element : <Navigate to="/PokerApp/login" replace />;
+  return user ? element : <Navigate to="/login" replace />;
 };
 
 function AppRoutes() {
@@ -19,10 +19,10 @@ function AppRoutes() {
 
   return (
     <Routes>
-      <Route path="/PokerApp" element={user ? <Navigate to="/PokerApp/chat" replace /> : <LoginPage />} />
-<Route path="/PokerApp/login" element={user ? <Navigate to="/PokerApp/chat" replace /> : <LoginPage />} />
-<Route path="/PokerApp/chat" element={<ProtectedRoute element={<ChatPage />} />} />
-<Route path="*" element={<Navigate to="/PokerApp" replace />} />
+      <Route path="/" element={user ? <Navigate to="/chat" replace /> : <LoginPage />} />
+      <Route path="/login" element={user ? <Navigate to="/chat" replace /> : <LoginPage />} />
+      <Route path="/chat" element={<ProtectedRoute element={<ChatPage />} />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
