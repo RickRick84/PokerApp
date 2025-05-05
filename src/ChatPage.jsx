@@ -579,12 +579,12 @@ function ChatPage() {
   style={{
     position: 'fixed',
     top: '15px',
-    left: '15px',
+    right: '15px', // CAMBIO CLAVE
     zIndex: 21000,
     background: 'transparent',
     border: 'none',
     cursor: 'pointer',
-    fontSize: '1.5rem',
+    fontSize: '1.8rem',
     color: 'white'
   }}
 >
