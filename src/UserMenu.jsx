@@ -69,8 +69,6 @@ function UserMenu() {
         <div className="dropdown-menu left-align">
           <div onClick={() => alert('Account')}><FaUser /> {t.account}</div>
           <div onClick={() => alert('Settings')}><FaCogs /> {t.settings}</div>
-          <div onClick={() => alert('Poker Bet')}><GiPokerHand /> {t.pokerBet}</div>
-          <div onClick={() => alert('News')}><FaNewspaper /> {newsLabel}</div>
           <div onClick={handleLogout}><FaSignOutAlt /> {t.signOut}</div>
         </div>
       )}

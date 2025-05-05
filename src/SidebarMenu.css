@@ -4,14 +4,14 @@
   top: 0;
   right: 0;
   height: 100vh;
-  background-color: #121212;
+  background-color: rgba(0, 0, 0, 0.95);
   color: white;
   padding: 1rem;
-  width: 260px;
+  width: 250px;
   transform: translateX(100%);
   transition: transform 0.3s ease;
-  z-index: 1000;
-  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 20000;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.4);
 }
 
 /* Estado cerrado desde la derecha */

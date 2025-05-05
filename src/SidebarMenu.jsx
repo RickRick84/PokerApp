@@ -11,7 +11,14 @@ function SidebarMenu({ isOpen, toggleSidebar }) {
       </button>
 
       <ul className="sidebar-list">
-        <li>POKER BET</li>
+      <li style={{ justifyContent: 'flex-start' }}>
+  <img
+    src="/pb_logo.png"
+    alt="Poker Bet"
+    style={{ height: '24px', marginRight: '10px' }}
+  />
+  <span style={{ fontWeight: 'bold', fontSize: '1rem' }}>Poker Bet</span>
+</li>
         <li>NEWS</li>
         <li>PREMIUM TRIPS</li>
         <li>RANKINGS</li>

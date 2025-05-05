@@ -9,54 +9,31 @@
   animation: fadeIn 0.3s ease-in-out;
 }
 
-.popup-container {
+.popup-card {
   max-height: 90vh;
   overflow-y: auto;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 95vw; /* evita que se pase horizontalmente */
-}
-
-.popup-card {
-  width: 300px;
-  flex: 0 0 auto;
+  max-width: 95vw;
+  padding: 2rem;
   background: #f9f9f9;
   color: #000;
   border-radius: 16px;
-  padding: 1.8rem;
   border: 2px solid #04c46a00;
-  text-align: center;
   box-shadow: 0 0 20px rgba(0, 255, 136, 0.103);
+  text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 2rem;
 }
 
-/* Botón de cierre */
-.close-btn {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  background: none;
-  border: none;
-  color: #333;
-  font-size: 1.5rem;
-  cursor: pointer;
-  z-index: 2;
-  transition: color 0.3s ease;
-}
-
-.close-btn:hover {
-  color: #e91e63;
-}
-
+/* PLAN OPTIONS responsive */
 .plans {
   display: flex;
-  flex-direction: row; /* <-- clave para horizontal en desktop */
+  flex-direction: row;
   gap: 1.5rem;
-  margin-top: 2rem;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -64,23 +41,19 @@
 @media (max-width: 768px) {
   .plans {
     flex-direction: column;
-  }
-
-  .popup-card {
-    flex-direction: column;
     align-items: center;
   }
 }
 
 .plan {
-  flex: 1;
+  width: 300px;
   background: rgba(255, 255, 255, 0.06);
   border: 2px solid #06201400;
   border-radius: 12px;
   padding: 1.5rem;
-  transition: transform 0.2s ease-in-out;
   text-align: center;
   box-shadow: 0 4px 15px rgba(0, 255, 136, 0.2);
+  transition: transform 0.2s ease-in-out;
 }
 
 .plan:hover {
@@ -104,10 +77,6 @@
   color: #ccc;
 }
 
-.plan h3 {
-  margin-bottom: 0.6rem;
-}
-
 button {
   margin-top: 1rem;
   background-color: #11352400;
@@ -124,13 +93,31 @@ button:hover {
   background-color: #043a2200;
 }
 
+/* Botón de cierre */
+.close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #e91e63;
+}
+
+/* Toggle Switch */
 .toggle-switch {
-  margin-top: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  color: #fff;
+  color: #000;
 }
 
 .switch {
@@ -182,20 +169,4 @@ input:checked + .slider:before {
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
-}
-
-@keyframes scaleIn {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-@keyframes popupFadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
 }
