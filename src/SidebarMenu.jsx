@@ -1,30 +1,24 @@
-// src/SidebarMenu.jsx
 import React from 'react';
 import './SidebarMenu.css';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { GiPokerHand } from 'react-icons/gi';
 
 function SidebarMenu({ isOpen, toggleSidebar }) {
   return (
-    <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
-      <button className="toggle-button" onClick={toggleSidebar}>
-        {isOpen ? <FaChevronRight /> : <FaChevronLeft />}
-      </button>
-
-      <ul className="sidebar-list">
-      <li style={{ justifyContent: 'flex-start' }}>
-  <img
-    src="/pb_logo.png"
-    alt="Poker Bet"
-    style={{ height: '24px', marginRight: '10px' }}
-  />
-  <span style={{ fontWeight: 'bold', fontSize: '1rem' }}>Poker Bet</span>
-</li>
-        <li>NEWS</li>
-        <li>PREMIUM TRIPS</li>
-        <li>RANKINGS</li>
-        <li>DISCORD</li>
-        <li>CONTACT</li>
-      </ul>
+    <div className={`sidebar-menu ${isOpen ? 'open' : ''}`}>
+      <div className="sidebar-header">
+        <button className="sidebar-toggle" onClick={toggleSidebar}>
+          <GiPokerHand size={24} />
+        </button>
+        <img src="/pb_logo.png" alt="Poker Bet" className="logo" />
+      </div>
+      <div className="sidebar-links">
+        <button className="sidebar-link">🧢 Merchandising Código Poker</button>
+        <button className="sidebar-link">🎟️ Sorteo Semanal Tickets Online (solo para subscriptores BASIC y PRO)</button>
+        <button className="sidebar-link">🎰 Sorteo Mensual Ticket Live Internacional (solo PRO)</button>
+        <button className="sidebar-link">✈️ Paquetes de Viaje (con opción VIP, con chofer, hotel y seguridad)</button>
+        <button className="sidebar-link">📆 Calendario de torneos Live & Online</button>
+        <button className="sidebar-link">📰 NEWS (NOTICIAS)</button>
+      </div>
     </div>
   );
 }
