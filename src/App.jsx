@@ -19,10 +19,10 @@ function AppRoutes() {
 
   return (
     <Routes>
-      <Route path="/" element={user ? <Navigate to="/chat" replace /> : <LoginPage />} />
-      <Route path="/login" element={user ? <Navigate to="/chat" replace /> : <LoginPage />} />
-      <Route path="/chat" element={<ProtectedRoute element={<ChatPage />} />} />
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path="/PokerApp" element={user ? <Navigate to="/PokerApp/chat" replace /> : <LoginPage />} />
+<Route path="/PokerApp/login" element={user ? <Navigate to="/PokerApp/chat" replace /> : <LoginPage />} />
+<Route path="/PokerApp/chat" element={<ProtectedRoute element={<ChatPage />} />} />
+<Route path="*" element={<Navigate to="/PokerApp" replace />} />
     </Routes>
   );
 }
