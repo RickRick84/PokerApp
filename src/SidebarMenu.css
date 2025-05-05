@@ -65,15 +65,8 @@
   justify-content: center;
 }
 
-.toggle-button::before {
-  content: "☰";
-  font-size: 22px;
-  color: #00ff88;
-  transition: transform 0.3s ease;
-}
-
 .toggle-button:hover {
-  background-color: #00e07a;
+  background-color: transparent;
 }
 
 @media (max-width: 768px) {
