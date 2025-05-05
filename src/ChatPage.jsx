@@ -201,16 +201,6 @@ const translations = {
       `OpenAI 오류: ${code || '알 수 없는 코드'} - ${message || '알 수 없는 오류'}`,
     invalidOpenAIResponse: 'OpenAI에서 유효한 응답을 받을 수 없습니다.',
   },
-  th: {
-    system: 'คุณคือผู้ช่วยที่เป็นมิตรและมีประโยชน์ในภาษาไทย',
-    welcome: 'สวัสดี! ฉันคือผู้ช่วยของคุณ ฉันสามารถช่วยอะไรคุณได้บ้าง?',
-    placeholder: 'พิมพ์คำถามของคุณ...',
-    writing: 'กำลังพิมพ์...',
-    fetchError: 'เกิดข้อผิดพลาดในการเชื่อมต่อกับ API',
-    openaiError: (code, message) =>
-      `ข้อผิดพลาดจาก OpenAI: ${code || 'รหัสไม่ทราบ'} - ${message || 'ข้อผิดพลาดที่ไม่ทราบ'}`,
-    invalidOpenAIResponse: 'ไม่สามารถรับการตอบสนองที่ถูกต้องจาก OpenAI ได้',
-  },
   el: {
     system: 'Είστε ένας φιλικός και εξυπηρετικός βοηθός στα ελληνικά.',
     welcome: 'Γεια! Είμαι ο βοηθός σας. Πώς μπορώ να σας βοηθήσω σήμερα;',
@@ -270,16 +260,6 @@ const translations = {
     openaiError: (code, message) =>
       `Greška OpenAI: ${code || 'Nepoznat kod'} - ${message || 'Nepoznata greška'}`,
     invalidOpenAIResponse: 'Nije moguće dobiti ispravan odgovor od OpenAI.',
-  },
-  fi: {
-    system: 'Olet ystävällinen ja avulias avustaja suomeksi.',
-    welcome: 'Hei! Olen avustajasi. Kuinka voin auttaa sinua tänään?',
-    placeholder: 'Kirjoita kysymyksesi...',
-    writing: 'Kirjoitetaan...',
-    fetchError: 'API-yhteydessä tapahtui virhe.',
-    openaiError: (code, message) =>
-      `OpenAI-virhe: ${code || 'Tuntematon koodi'} - ${message || 'Tuntematon virhe'}`,
-    invalidOpenAIResponse: 'OpenAI:lta ei saatu kelvollista vastausta.',
   },
   tl: {
     choosePlan: 'Piliin ang iyong plano',
@@ -658,3 +638,4 @@ function ChatPage() {
     </>
   );
 }
+export default ChatPage;
