@@ -9,7 +9,7 @@ import {
 import { useAuth } from './AuthContext';
 import { auth } from './firebaseConfig';
 import './LoginPage.css';
-import LogoutButton from './LogoutButton';
+import LogoutIcon from './LogoutIcon';
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
@@ -71,7 +71,7 @@ const LoginPage = () => {
       {user ? (
         <div className="user-logged-in">
           <p className="welcome-text">Bienvenido, {user.displayName || user.email}</p>
-          <LogoutButton />
+          <LogoutIcon />
         </div>
       ) : (
         <div className="auth-forms">
