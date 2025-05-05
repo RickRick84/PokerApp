@@ -3,7 +3,7 @@ import buttons from './buttonLabels';
 import './SidebarMenu.css';
 import { GiPokerHand } from 'react-icons/gi';
 import { FaNewspaper } from 'react-icons/fa';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fa';
 
 const SidebarMenu = ({ currentLang, setShowPopup }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -25,8 +25,8 @@ const SidebarMenu = ({ currentLang, setShowPopup }) => {
   return (
     <div className={`sidebar right ${isOpen ? 'open' : 'closed'}`}>
       <button className="toggle-button" onClick={toggleSidebar}>
-        {isOpen ? <FiChevronRight size={24} /> : <FiChevronLeft size={24} />}
-      </button>
+  {isOpen ? <FaChevronRight /> : <FaChevronLeft />}
+</button>
 
       {isOpen && (
         <ul className="sidebar-list">

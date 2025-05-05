@@ -52,24 +52,24 @@
 .toggle-button {
   position: absolute;
   top: 15px;
-  left: -30px;
-  background: #00ff8800;
-  color: black;
-  border: none;
-  width: 28px;
-  height: 28px;
+  left: -28px;
+  background: #121212;
+  border: 2px solid #00ff88;
+  color: #00ff88;
+  padding: 6px;
   border-radius: 50%;
+  cursor: pointer;
+  z-index: 10010;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   font-size: 16px;
-  z-index: 10010;
   transition: background 0.3s ease;
 }
 
 .toggle-button:hover {
-  background-color: #043b2200;
+  background-color: #00ff88;
+  color: #000;
 }
 
 @media (max-width: 768px) {

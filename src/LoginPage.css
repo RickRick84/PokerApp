@@ -1,17 +1,17 @@
 .auth-form-container {
-  max-width: 460px;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 2rem;
+  max-width: 420px;
   width: 90%;
   margin: 4rem auto;
-  padding: 2rem;
-  background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 18px;
-  box-shadow: 0 0 30px rgba(0, 255, 136, 0.25);
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0, 255, 136, 0.25);
 }
 
 .auth-forms {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 input {
@@ -19,64 +19,35 @@ input {
   padding: 0.8rem;
   border-radius: 8px;
   border: none;
-  margin-bottom: 1rem;
+  font-size: 1rem;
+  background: #1e1e1e;
+  color: white;
 }
 
 button {
   padding: 0.8rem;
-  width: 100%;
-  border-radius: 8px;
   font-weight: bold;
   background-color: #00ff88;
   color: #000;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 button:hover {
   background-color: #00e07a;
 }
 
-.user-logged-in {
-  text-align: center;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
-}
-
-.welcome-text {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  color: #00ff88;
-}
-
-.loading-text {
-  color: white;
-  text-align: center;
-  font-size: 1.1rem;
-  margin-top: 4rem;
-}
-
-/* MEDIA QUERY */
+/* Responsive */
 @media (max-width: 600px) {
   .auth-form-container {
-    width: 92%;
-    margin: 2rem auto;
     padding: 1.5rem;
     border-radius: 14px;
   }
 
-  input {
-    font-size: 0.95rem;
-  }
-
-  button {
+  input, button {
     font-size: 0.95rem;
     padding: 0.7rem;
-  }
-
-  .welcome-text {
-    font-size: 1rem;
   }
 }

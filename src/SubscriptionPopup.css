@@ -54,13 +54,14 @@
 
 .plans {
   display: flex;
-  flex-direction: row; /* importante para que se vea horizontal */
+  flex-direction: row; /* <-- clave para horizontal en desktop */
   gap: 1.5rem;
   margin-top: 2rem;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .plans {
     flex-direction: column;
   }
