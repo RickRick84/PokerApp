@@ -14,7 +14,9 @@
   gap: 1.5rem;
 }
 
-input {
+/* Espaciado entre inputs y botones */
+.auth-forms input,
+.auth-forms button {
   width: 100%;
   padding: 0.8rem;
   border-radius: 8px;
@@ -22,20 +24,19 @@ input {
   font-size: 1rem;
   background: #1e1e1e;
   color: white;
+  box-sizing: border-box;
+  margin-top: 0.2rem;
 }
 
-button {
-  padding: 0.8rem;
-  font-weight: bold;
+.auth-forms button {
   background-color: #00ff88;
   color: #000;
-  border: none;
-  border-radius: 8px;
+  font-weight: bold;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
-button:hover {
+.auth-forms button:hover {
   background-color: #00e07a;
 }
 
@@ -80,40 +81,6 @@ button:hover {
   font-size: 0.95rem;
 }
 
-.google-button {
-  background: #ffffff;
-  color: #000;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  padding: 0.8rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.google-button:hover {
-  background: #e0e0e0;
-}
-
-.loading-bar.google {
-  height: 3px;
-  width: 100%;
-  background: linear-gradient(to right, #4285f4, #34a853, #fbbc05, #ea4335);
-  animation: loadingAnim 2s linear infinite;
-  border-radius: 3px;
-  margin-bottom: 12px;
-}
-
-/* Loading animation */
-@keyframes loadingAnim {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
-}
-
 /* Responsive */
 @media (max-width: 600px) {
   .auth-form-container {
@@ -121,8 +88,8 @@ button:hover {
     border-radius: 14px;
   }
 
-  input,
-  button {
+  .auth-forms input,
+  .auth-forms button {
     font-size: 0.95rem;
     padding: 0.7rem;
   }

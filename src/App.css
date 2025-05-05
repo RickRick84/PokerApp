@@ -252,6 +252,7 @@ body {
   .chat-box {
     width: 100%;
     max-width: 100%;
+    margin-top: 60px !important;
     height: auto;
     max-height: 60vh;
   }
@@ -259,6 +260,7 @@ body {
   .input-bar {
     flex-direction: column;
     gap: 0.5rem;
+    margin-top: 20px;
   }
 
   .input-bar input {

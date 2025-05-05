@@ -461,6 +461,7 @@ function ChatPage() {
   const [loading, setLoading] = useState(false);
   const chatBoxRef = useRef(null);
   const sendAudioRef = useRef(new Audio('/sounds/button-click.mp3'));
+  const chatEndRef = useRef(null);
 
   const playSendSound = () => {
     sendAudioRef.current.currentTime = 0;
@@ -483,13 +484,10 @@ function ChatPage() {
   }, [currentLang]);
 
   useEffect(() => {
-    const chatBox = chatBoxRef.current;
-    if (chatBox) {
-      const timeoutId = setTimeout(() => {
-        chatBox.scrollTop = chatBox.scrollHeight;
-      }, 50);
-      return () => clearTimeout(timeoutId);
-    }
+    const timeoutId = setTimeout(() => {
+      chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, 50);
+    return () => clearTimeout(timeoutId);
   }, [messages, loading]);
 
   if (authLoading) return <p>Cargando...</p>;
@@ -581,24 +579,34 @@ function ChatPage() {
   return (
     <>
       <UserMenu />
-      <SidebarMenu currentLang={currentLang} setShowPopup={setShowPopup}/>
+      <SidebarMenu currentLang={currentLang} setShowPopup={setShowPopup} />
   
-      {isAdmin && <div style={{ padding: '1rem', textAlign: 'center' }}><AdminControls /></div>}
-
+      {isAdmin && (
+        <div style={{ padding: '1rem', textAlign: 'center' }}>
+          <AdminControls />
+        </div>
+      )}
+  
       <div className="app chat-page-container">
         <div className="chat-box" ref={chatBoxRef}>
           {messages.slice(1).map((msg, idx) => (
             <div key={idx} className={`message ${msg.role}`}>
-              <div className="message-content"><span>{msg.content}</span></div>
+              <div className="message-content">
+                <span>{msg.content}</span>
+              </div>
             </div>
           ))}
+  
           {loading && (
             <div className="message assistant">
               <span>{t.writing}</span>
             </div>
           )}
+  
+          {/* Marcador para scroll automático */}
+          <div ref={chatEndRef}></div>
         </div>
-
+  
         <div className="input-bar">
           <input
             value={input}
@@ -612,43 +620,41 @@ function ChatPage() {
           </button>
         </div>
       </div>
-      
+  
       {showPopup && (
-  <div className="popup-overlay">
-    <div className="popup-card">
-      <h2>{t.choosePlan}</h2>
-      <p>{t.selectOne}</p>
-      <div className="plan-options">
-        <div className="plan-card">
-          <h3>Basic</h3>
-          <p>$9 / {t.month}</p>
-          <p>$86.40 / {t.year} (20%)</p>
-          <ul>
-            <li>{t.basicLimit}</li>
-            <li>{t.oneTeam}</li>
-            <li>{t.support}</li>
-          </ul>
-          <button onClick={() => alert(t.comingSoon)}>{t.pickPlan}</button>
+        <div className="popup-overlay">
+          <div className="popup-card">
+            <h2>{t.choosePlan}</h2>
+            <p>{t.selectOne}</p>
+            <div className="plan-options">
+              <div className="plan-card">
+                <h3>Basic</h3>
+                <p>$9 / {t.month}</p>
+                <p>$86.40 / {t.year} (20%)</p>
+                <ul>
+                  <li>{t.basicLimit}</li>
+                  <li>{t.oneTeam}</li>
+                  <li>{t.support}</li>
+                </ul>
+                <button onClick={() => alert(t.comingSoon)}>{t.pickPlan}</button>
+              </div>
+              <div className="plan-card">
+                <h3>Pro</h3>
+                <p>$29 / {t.month}</p>
+                <p>$243.60 / {t.year} (30%)</p>
+                <ul>
+                  <li>{t.proLimit}</li>
+                  <li>{t.unlimitedUsers}</li>
+                  <li>{t.prioritySupport}</li>
+                  <li>{t.exclusiveContent}</li>
+                </ul>
+                <button onClick={() => alert(t.comingSoon)}>{t.pickPlan}</button>
+              </div>
+            </div>
+            <button className="close-btn" onClick={() => setShowPopup(false)}>X</button>
+          </div>
         </div>
-        <div className="plan-card">
-          <h3>Pro</h3>
-          <p>$29 / {t.month}</p>
-          <p>$243.60 / {t.year} (30%)</p>
-          <ul>
-            <li>{t.proLimit}</li>
-            <li>{t.unlimitedUsers}</li>
-            <li>{t.prioritySupport}</li>
-            <li>{t.exclusiveContent}</li>
-          </ul>
-          <button onClick={() => alert(t.comingSoon)}>{t.pickPlan}</button>
-        </div>
-      </div>
-      <button className="close-btn" onClick={() => setShowPopup(false)}>X</button>
-    </div>
-  </div>
-)}
+      )}
     </>
   );
 }
-
-export default ChatPage;
