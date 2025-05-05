@@ -464,12 +464,17 @@ function ChatPage() {
   }, [currentLang]);
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }, 50);
-    return () => clearTimeout(timeoutId);
+    const chatBox = chatBoxRef.current;
+    if (!chatBox) return;
+  
+    // Solo hacer scroll si estamos cerca del final (previene jumps si estás leyendo)
+    const nearBottom = chatBox.scrollHeight - chatBox.scrollTop <= chatBox.clientHeight + 100;
+  
+    if (nearBottom) {
+      chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' });
+    }
   }, [messages, loading]);
-
+  
   if (authLoading) return <p>Cargando...</p>;
   if (!user) return <Navigate to="/login" />;
 
@@ -555,28 +560,70 @@ function ChatPage() {
     }
   };
   const [showPopup, setShowPopup] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+  const triggerComingSoonMessage = () => {
+    setShowMessage(true);
+    setTimeout(() => setShowMessage(false), 3000); // Se oculta solo en 3 segundos
+  };
+  
 
   return (
     <>
       <UserMenu />
-      <SidebarMenu currentLang={currentLang} setShowPopup={setShowPopup} />
+      <SidebarMenu isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       
       {showPopup && (
   <div className="popup-overlay" onClick={() => setShowPopup(false)}>
-    <img
-      src="/popup_image_poker_plans_.jpg"
-      alt="Poker Plans"
-      style={{
-        maxWidth: '90vw',
-        maxHeight: '90vh',
-        borderRadius: '20px',
-        boxShadow: '0 0 30px rgba(0,0,0,0.7)',
-        cursor: 'pointer'
-      }}
-    />
+    <div style={{ position: 'relative' }}>
+      <img
+        src="/popup_image_poker_plans_.jpg"
+        alt="Poker Plans"
+        style={{
+          maxWidth: '98vw',
+          maxHeight: '95vh',
+          borderRadius: '20px',
+          boxShadow: '0 0 40px rgba(0,0,0,0.8)',
+          cursor: 'pointer'
+        }}
+      />
+      {/* Botones invisibles encima de las zonas donde están los SUBSCRIBE */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          triggerComingSoonMessage();
+        }}
+        style={{
+          position: 'absolute',
+          bottom: '23%',
+          left: '18%',
+          width: '20%',
+          height: '10%',
+          background: 'transparent',
+          border: 'none',
+          cursor: 'pointer'
+        }}
+      />
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          triggerComingSoonMessage();
+        }}
+        style={{
+          position: 'absolute',
+          bottom: '23%',
+          right: '18%',
+          width: '20%',
+          height: '10%',
+          background: 'transparent',
+          border: 'none',
+          cursor: 'pointer'
+        }}
+      />
+    </div>
   </div>
 )}
-
 
       {isAdmin && (
         <div style={{ padding: '1rem', textAlign: 'center' }}>
@@ -617,6 +664,25 @@ function ChatPage() {
           </button>
         </div>
       </div>
+
+      {showMessage && (
+  <div style={{
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: 'rgba(0,0,0,0.85)',
+    color: '#fff',
+    padding: '1rem 2rem',
+    borderRadius: '12px',
+    fontSize: '1.2rem',
+    zIndex: 10000,
+    boxShadow: '0 0 20px rgba(0,0,0,0.6)',
+    textAlign: 'center'
+  }}>
+    {t.comingSoon}
+  </div>
+)}
     </>
   );
 }
