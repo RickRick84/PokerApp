@@ -81,6 +81,14 @@
   font-size: 0.95rem;
 }
 
+.password-hint {
+  color: #bbb;
+  font-size: 0.85rem;
+  display: block;
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .auth-form-container {

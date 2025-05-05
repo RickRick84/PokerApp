@@ -50,14 +50,21 @@ const LoginPage = () => {
     e.preventDefault();
     setError(null);
     setLoadingForm(true);
+    
+    if (isRegistering && password.length < 6) {
+      setError('La contraseña debe tener al menos 6 caracteres.');
+      setLoadingForm(false);
+      return;
+    }
+    
     try {
       if (isRegistering) {
-        await createUserWithEmailAndPassword(auth, email, password);
+        await createUserWithEmailAndPassword(auth, email.trim(), password);
       } else {
-        await signInWithEmailAndPassword(auth, email, password);
+        await signInWithEmailAndPassword(auth, email.trim(), password);
       }
     } catch (err) {
-      setError('Error al autenticar. Verificá tus datos.');
+      setError('No pudimos verificar tus datos. Asegurate de que el email esté bien escrito y la contraseña sea correcta.');
       console.error(err.message);
     } finally {
       setLoadingForm(false);
@@ -96,14 +103,18 @@ const LoginPage = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-
-            <input
-              type="password"
-              placeholder="Contraseña"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+<input
+  type="password"
+  placeholder="Contraseña (mínimo 6 caracteres)"
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+  required
+/>
+{isRegistering && (
+  <small className="password-hint">
+    La contraseña debe tener al menos 6 caracteres. Se recomienda incluir una mayúscula y un número.
+  </small>
+)}
 
             <button type="submit" disabled={loadingForm}>
               {loadingForm
