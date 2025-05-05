@@ -574,6 +574,23 @@ function ChatPage() {
       <UserMenu />
       <SidebarMenu isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       
+      <button
+  onClick={toggleSidebar}
+  style={{
+    position: 'fixed',
+    top: '15px',
+    left: '15px',
+    zIndex: 21000,
+    background: 'transparent',
+    border: 'none',
+    cursor: 'pointer',
+    fontSize: '1.5rem',
+    color: 'white'
+  }}
+>
+  ☰
+</button>
+
       {showPopup && (
   <div className="popup-overlay" onClick={() => setShowPopup(false)}>
     <div style={{ position: 'relative' }}>
