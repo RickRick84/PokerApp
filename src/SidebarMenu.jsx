@@ -1,47 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import buttons from './buttonLabels';
+// src/SidebarMenu.jsx
+import React from 'react';
 import './SidebarMenu.css';
-import { GiPokerHand } from 'react-icons/gi';
-import { FaNewspaper } from 'react-icons/fa';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-const SidebarMenu = ({ currentLang, setShowPopup }) => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [isOpen, setIsOpen] = useState(window.innerWidth > 768);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const mobile = window.innerWidth <= 768;
-      setIsMobile(mobile);
-      setIsOpen(!mobile);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const labels = buttons[currentLang] || buttons.en;
-  const toggleSidebar = () => setIsOpen(!isOpen);
-
+function SidebarMenu({ isOpen, toggleSidebar }) {
   return (
-    <div className={`sidebar right ${isOpen ? 'open' : 'closed'}`}>
+    <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
       <button className="toggle-button" onClick={toggleSidebar}>
-  {isOpen ? <FaChevronRight /> : <FaChevronLeft />}
-</button>
+        {isOpen ? <FaChevronRight /> : <FaChevronLeft />}
+      </button>
 
-      {isOpen && (
-        <ul className="sidebar-list">
-          <li onClick={() => setShowPopup(true)}>{labels.shop}</li>
-          <li onClick={() => setShowPopup(true)}>{labels.pokerTrips}</li>
-          <li onClick={() => setShowPopup(true)}>{labels.buyTickets}</li>
-          <li onClick={() => setShowPopup(true)}>{labels.giveaways}</li>
-          <li onClick={() => setShowPopup(true)}>{labels.games}</li>
-          <li onClick={() => setShowPopup(true)}>{labels.calendar}</li>
-          <li onClick={() => setShowPopup(true)}><GiPokerHand /> {labels.pokerBet}</li>
-          <li onClick={() => setShowPopup(true)}><FaNewspaper /> {labels.news}</li>
-        </ul>
-      )}
+      <ul className="sidebar-list">
+        <li>POKER BET</li>
+        <li>NEWS</li>
+        <li>PREMIUM TRIPS</li>
+        <li>RANKINGS</li>
+        <li>DISCORD</li>
+        <li>CONTACT</li>
+      </ul>
     </div>
   );
-};
+}
 
 export default SidebarMenu;

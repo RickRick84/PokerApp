@@ -1,24 +1,68 @@
+// src/LoginPage.jsx
+import { useState, useEffect } from 'react';
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from 'firebase/auth';
 import { useAuth } from './AuthContext';
-import LoginForm from './LoginForm';
-import RegisterForm from './RegisterForm';
+import { auth } from './firebaseConfig';
 import './LoginPage.css';
 import LogoutButton from './LogoutButton';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 
 const LoginPage = () => {
   const { user, loading } = useAuth();
   const navigate = useNavigate();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const [isRegistering, setIsRegistering] = useState(false);
+  const [loadingForm, setLoadingForm] = useState(false);
+  const [loadingGoogle, setLoadingGoogle] = useState(false);
 
   useEffect(() => {
     if (!loading && user) {
       const supportedLangs = ['es', 'en', 'pt'];
       const browserLang = navigator.language.slice(0, 2);
       const lang = supportedLangs.includes(browserLang) ? browserLang : 'es';
-      localStorage.setItem('pokerBotLang', lang);
       navigate(`/chat/${lang}`);
     }
   }, [user, loading, navigate]);
+
+  const loginWithGoogle = async () => {
+    setError(null);
+    setLoadingGoogle(true);
+    try {
+      const provider = new GoogleAuthProvider();
+      await signInWithPopup(auth, provider);
+    } catch (err) {
+      setError('Error al iniciar con Google');
+      console.error(err.message);
+    } finally {
+      setLoadingGoogle(false);
+    }
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
+    setLoadingForm(true);
+    try {
+      if (isRegistering) {
+        await createUserWithEmailAndPassword(auth, email, password);
+      } else {
+        await signInWithEmailAndPassword(auth, email, password);
+      }
+    } catch (err) {
+      setError('Error al autenticar. Verificá tus datos.');
+      console.error(err.message);
+    } finally {
+      setLoadingForm(false);
+    }
+  };
 
   if (loading) return <p className="loading-text">Cargando...</p>;
 
@@ -31,8 +75,56 @@ const LoginPage = () => {
         </div>
       ) : (
         <div className="auth-forms">
-          <LoginForm />
-          <RegisterForm />
+          <h2>{isRegistering ? 'Registrarse' : 'Iniciar sesión'}</h2>
+
+          {error && <p className="auth-error">{error}</p>}
+          {loadingGoogle && <div className="loading-bar google" />}
+
+          <button
+            onClick={loginWithGoogle}
+            className="google-button"
+            disabled={loadingGoogle}
+          >
+            {loadingGoogle ? 'Conectando...' : 'Entrar con Google'}
+          </button>
+
+          <form onSubmit={handleFormSubmit}>
+            <input
+              type="email"
+              placeholder="Correo electrónico"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+
+            <input
+              type="password"
+              placeholder="Contraseña"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+
+            <button type="submit" disabled={loadingForm}>
+              {loadingForm
+                ? isRegistering
+                  ? 'Registrando...'
+                  : 'Entrando...'
+                : isRegistering
+                ? 'Registrarse'
+                : 'Entrar'}
+            </button>
+          </form>
+
+          <button
+            type="button"
+            onClick={() => setIsRegistering(!isRegistering)}
+            className="toggle-button-form"
+          >
+            {isRegistering
+              ? '¿Ya tienes cuenta? Inicia sesión'
+              : '¿No tienes cuenta? Registrate'}
+          </button>
         </div>
       )}
     </div>

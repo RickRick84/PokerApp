@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { messages, model = 'gpt-4-turbo', temperature = 0.7 } = req.body;
+    const { messages, model = 'gpt-4-turbo', temperature = 0.7, max_tokens = 1000 } = req.body;
 
     console.log('[API] Request to OpenAI:', { model, temperature });
 
@@ -20,6 +20,7 @@ export default async function handler(req, res) {
       model,
       messages,
       temperature,
+      max_tokens,
     });
 
     const assistantMessage = response.choices?.[0]?.message;

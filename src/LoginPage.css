@@ -39,6 +39,81 @@ button:hover {
   background-color: #00e07a;
 }
 
+.toggle-button-form {
+  background: none;
+  color: #00ff88;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.toggle-button-form:hover {
+  text-decoration: underline;
+}
+
+.loading-text {
+  color: white;
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 1.1rem;
+}
+
+.welcome-text {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #00ff88;
+}
+
+.user-logged-in {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+.auth-error {
+  color: #ff6666;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.google-button {
+  background: #ffffff;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.google-button:hover {
+  background: #e0e0e0;
+}
+
+.loading-bar.google {
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(to right, #4285f4, #34a853, #fbbc05, #ea4335);
+  animation: loadingAnim 2s linear infinite;
+  border-radius: 3px;
+  margin-bottom: 12px;
+}
+
+/* Loading animation */
+@keyframes loadingAnim {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .auth-form-container {
@@ -46,8 +121,17 @@ button:hover {
     border-radius: 14px;
   }
 
-  input, button {
+  input,
+  button {
     font-size: 0.95rem;
     padding: 0.7rem;
+  }
+
+  .welcome-text {
+    font-size: 1rem;
+  }
+
+  .toggle-button-form {
+    font-size: 0.85rem;
   }
 }
