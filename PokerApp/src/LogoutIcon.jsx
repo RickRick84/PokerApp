@@ -10,8 +10,7 @@ const LogoutIcon = () => {
 
   const handleLogout = async () => {
     await signOut(auth);
-    localStorage.removeItem('pokerBotLang');
-    navigate('/login');
+    navigate('/PokerApp/login');
   };
 
   return (

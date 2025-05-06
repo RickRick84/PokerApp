@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-image: url('/bg.jpg');
+  background-image: url('/PokerApp/bg.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -232,8 +232,11 @@ body {
   background-color: #ff3333;
 }
 
-@media only screen and (max-width: 768px) {body {
-  background-image: url('/bg_mobile.jpg');
+@media only screen and (max-width: 768px) {
+  body {
+    background-image: url('/PokerApp/bg_mobile.jpg');
+  }
+
   .popup-container {
     flex-direction: column;
     padding: 1.5rem;
@@ -266,9 +269,8 @@ body {
     width: 100%;
   }
 
-    .auth-form-container {
-      margin-top: 2rem;
-      padding: 1.5rem;
-    }
+  .auth-form-container {
+    margin-top: 2rem;
+    padding: 1.5rem;
   }
 }

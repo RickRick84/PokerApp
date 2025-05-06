@@ -595,7 +595,7 @@ function ChatPage() {
   <div className="popup-overlay" onClick={() => setShowPopup(false)}>
     <div style={{ position: 'relative' }}>
       <img
-        src="/popup_image_poker_plans_.jpg"
+        src="/PokerApp/popup_image_poker_plans_.jpg"
         alt="Poker Plans"
         style={{
           maxWidth: '98vw',
@@ -642,11 +642,11 @@ function ChatPage() {
   </div>
 )}
 
-      {isAdmin && (
-        <div style={{ padding: '1rem', textAlign: 'center' }}>
-          <AdminControls />
-        </div>
-      )}
+{isAdmin && (
+  <div style={{ padding: '1rem', textAlign: 'center' }}>
+    <AdminControls resetUserCount={() => localStorage.clear()} />
+  </div>
+)}
   
       <div className="app chat-page-container">
         <div className="chat-box" ref={chatBoxRef}>

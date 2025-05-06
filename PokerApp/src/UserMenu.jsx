@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useAuth } from './AuthContext';
-import { FaSignOutAlt, FaCogs, FaUser, FaNewspaper } from 'react-icons/fa';
-import { GiPokerHand } from 'react-icons/gi';
+import { FaSignOutAlt, FaCogs, FaUser } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import './UserMenu.css';
 
@@ -60,7 +59,7 @@ function UserMenu() {
   return (
     <div className="user-menu" ref={menuRef}>
       <img
-        src={user?.photoURL}
+        src={user?.photoURL || '/PokerApp/default-avatar.png'} // <-- usa ruta con base prefix
         alt="Profile"
         className="user-avatar"
         onClick={toggleMenu}

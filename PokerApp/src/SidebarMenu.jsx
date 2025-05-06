@@ -1,6 +1,8 @@
 import React from 'react';
 import './SidebarMenu.css';
-import PokerBetLogo from '/pb_logo.png';
+
+// Asegura el path con prefijo base correcto si estás sirviendo desde /PokerApp/
+const PokerBetLogo = '/PokerApp/pb_logo.png';
 
 const SidebarMenu = ({ isOpen, toggleSidebar }) => {
   return (
@@ -10,11 +12,11 @@ const SidebarMenu = ({ isOpen, toggleSidebar }) => {
           <img src={PokerBetLogo} alt="PokerBet" className="sidebar-logo" />
         </div>
       </div>
-      <button className="sidebar-link">🧢 MERCHANDISING</button>
-      <button className="sidebar-link">🎟️ SORTEO SEMANAL</button>
-      <button className="sidebar-link">🎰 SORTEO MENSUAL</button>
-      <button className="sidebar-link">📆 CALENDARIO</button>
-      <button className="sidebar-link">📰 NEWS</button>
+      <button className="sidebar-link" onClick={toggleSidebar}>🧢 MERCHANDISING</button>
+      <button className="sidebar-link" onClick={toggleSidebar}>🎟️ SORTEO SEMANAL</button>
+      <button className="sidebar-link" onClick={toggleSidebar}>🎰 SORTEO MENSUAL</button>
+      <button className="sidebar-link" onClick={toggleSidebar}>📆 CALENDARIO</button>
+      <button className="sidebar-link" onClick={toggleSidebar}>📰 NEWS</button>
     </div>
   );
 };

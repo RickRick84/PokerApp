@@ -10,14 +10,17 @@ const AdminControls = ({ resetUserCount }) => {
 
   return (
     <div style={{ marginTop: '1rem' }}>
-      <button onClick={resetUserCount} style={{
-        backgroundColor: '#ff5555',
-        color: 'white',
-        border: 'none',
-        padding: '0.5rem 1rem',
-        borderRadius: '8px',
-        cursor: 'pointer'
-      }}>
+      <button
+        onClick={resetUserCount}
+        style={{
+          backgroundColor: '#ff5555',
+          color: 'white',
+          border: 'none',
+          padding: '0.5rem 1rem',
+          borderRadius: '8px',
+          cursor: 'pointer',
+        }}
+      >
         Resetear límite diario
       </button>
     </div>
