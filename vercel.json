@@ -1,7 +1,4 @@
 {
-  "rewrites": [
-    { "source": "/PokerApp(/.*)?", "destination": "/PokerApp/index.html" }
-  ],
   "builds": [
     {
       "src": "PokerApp/package.json",
@@ -9,6 +6,10 @@
     }
   ],
   "routes": [
-    { "src": "/PokerApp/(.*)", "dest": "/PokerApp/$1" }
-  ]
+    {
+      "src": "/PokerApp/(.*)",
+      "dest": "/PokerApp/$1"
+    }
+  ],
+  "outputDirectory": "PokerApp/dist"
 }
