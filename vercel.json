@@ -9,12 +9,7 @@
     }
   ],
   "routes": [
-    {
-      "src": "/PokerApp/(.*)",
-      "dest": "/PokerApp/$1"
-    }
+    { "src": "/PokerApp/(.*)", "dest": "/PokerApp/$1" }
   ],
-  "framework": null,
-  "outputDirectory": "PokerApp/dist",
-  "buildCommand": "cd PokerApp && npm install && npm run build"
+  "outputDirectory": "PokerApp/dist"
 }
