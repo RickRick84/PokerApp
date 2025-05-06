@@ -2,7 +2,7 @@ import React from 'react';
 import './SidebarMenu.css';
 
 // Asegura el path con prefijo base correcto si estás sirviendo desde /PokerApp/
-const PokerBetLogo = '/PokerApp/pb_logo.png';
+const PokerBetLogo = '/PokerApp/pb_logo.png'; 
 
 const SidebarMenu = ({ isOpen, toggleSidebar }) => {
   return (
