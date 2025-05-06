@@ -5,10 +5,7 @@
   "builds": [
     {
       "src": "PokerApp/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "PokerApp/dist"
-      }
+      "use": "@vercel/static-build"
     }
   ],
   "routes": [
@@ -16,5 +13,8 @@
       "src": "/PokerApp/(.*)",
       "dest": "/PokerApp/$1"
     }
-  ]
+  ],
+  "framework": null,
+  "outputDirectory": "PokerApp/dist",
+  "buildCommand": "cd PokerApp && npm install && npm run build"
 }
